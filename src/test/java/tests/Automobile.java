@@ -36,6 +36,7 @@ public class Automobile extends BaseTest {
     public void test(String environment) throws Exception {
         openApplication(environment, "Application started");
         AutomobilePage automobilePagePage = new AutomobilePage(driver);
+
         automobilePagePage.clickCookie();
         automobilePagePage.selectBrand("Mercedes Benz");
         automobilePagePage.selectModel("C 220");

@@ -200,7 +200,9 @@ public class AutomobilePage extends BasePage {
     }
 
     public void clickCloseFilterWaranty() throws Exception {
-        click(closeFilterWarranty, "Clicked on close filter waranty");
+        if (warrantyMark.isSelected()){
+            click(closeFilterWarranty, "Clicked on close filter waranty");
+        }
     }
 
     public void clickCloseFilterRegion() throws Exception {
@@ -221,6 +223,5 @@ public class AutomobilePage extends BasePage {
         String boolResult = String.valueOf(isContains);
         assertEqual(boolResult, "true", "Checking the obtained and expected results - after close filters");
     }
-
 }
 

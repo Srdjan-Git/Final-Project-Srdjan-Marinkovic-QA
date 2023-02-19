@@ -8,29 +8,29 @@
 
     <test name="Search old and new automobile">
         <classes>
-            <class name="tests.Automobile"/>
+            <class name="runners.Runner"/>   <!--tests.Automobile  for TestNG-->
         </classes>
     </test>
 
-    <parameter name="browser" value="CHROME"/>
-    <parameter name="environment" value="PROD"/>
-    <parameter name="quit" value="YES"/>
+<!--    <parameter name="browser" value="CHROME"/>-->
+<!--    <parameter name="environment" value="PROD"/>-->
+<!--    <parameter name="quit" value="YES"/>-->
 
-    <test name="Search old and new motorcycles">
-        <classes>
-            <class name="tests.Motorcycles"/>
-        </classes>
-    </test>
+<!--    <test name="Search old and new motorcycles">-->
+<!--        <classes>-->
+<!--            <class name="tests.Motorcycles"/>   &lt;!&ndash;tests.Motorcycles  for TestNG&ndash;&gt;-->
+<!--        </classes>-->
+<!--    </test>-->
 
-    <parameter name="browser" value="CHROME"/>
-    <parameter name="environment" value="PROD"/>
-    <parameter name="quit" value="YES"/>
+<!--    <parameter name="browser" value="CHROME"/>-->
+<!--    <parameter name="environment" value="PROD"/>-->
+<!--    <parameter name="quit" value="YES"/>-->
 
-    <test name="Search old and new bus">
-        <classes>
-            <class name="tests.TransportVehiclesBus"/>
-        </classes>
-    </test>
+<!--    <test name="Search old and new bus">-->
+<!--        <classes>-->
+<!--            <class name="tests.TransportVehiclesBus"/>   &lt;!&ndash;tests.TransportVehiclesBus  for TestNG&ndash;&gt;-->
+<!--        </classes>-->
+<!--    </test>-->
 </suite>
 
 
