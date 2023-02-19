@@ -36,36 +36,25 @@ public class SearchMotorcycles extends BaseTest {
     public void test(String environment) throws Exception {
         openApplication(environment, "Application started");
         SearchMotorcyclesPage searchMotorcyclesPage = new SearchMotorcyclesPage(driver);
+
         searchMotorcyclesPage.clickCookie();
         searchMotorcyclesPage.clickVehicleMotorcycles();
 
-//        SearchCarPage searchCarPagePage = new SearchCarPage(driver);
-//        searchCarPagePage.clickCookie();
-//        searchCarPagePage.selectBrand("Mercedes Benz");
-//        searchCarPagePage.selectModel("C 220");
-//        searchCarPagePage.enterPriceTo("10000");
-//        searchCarPagePage.selectYearFrom("2007 god.");
-//        searchCarPagePage.selectYearTo("2015 god.");
-//        searchCarPagePage.selectChassis("Karavan");
-//        searchCarPagePage.selectFuel("Benzin");
-//        searchCarPagePage.selectRegion("Beograd");
-//        searchCarPagePage.selectOldNewVehicles("Samo polovna vozila");
-//        searchCarPagePage.checkWaranty();
-//
-//        searchCarPagePage.clickSearchVehicle();
-//        searchCarPagePage.clickSurvey();
-//
-//        searchCarPagePage.assertResultSerach("Trenutno nema rezultata koji odgovaraju tvom kriterijumu pretraživanja. Savetujemo ti da oglasiš kupovinu vozila kakvo tražiš, a mi ćemo te obavestiti kada se takvo vozilo pojavi na sajtu.");
-//
-//        searchCarPagePage.clickCloseFilterWaranty();
-//        searchCarPagePage.clickCloseFilterChassis();
-//        searchCarPagePage.clickCloseFilterFuel();
-//        searchCarPagePage.clickCloseFilterPriceTo();
-//        searchCarPagePage.clickCloseFilterRegion();
-//
-//        searchCarPagePage.selectChassis("Limuzina");
-//        searchCarPagePage.clickSearchVehicle();
-//
-//        searchCarPagePage.assertResultSerachAfterCloseFilters("Prikazano");
+        searchMotorcyclesPage.selectBrand("Honda");
+        searchMotorcyclesPage.enterPriceTo("6000");
+        searchMotorcyclesPage.selectYearFrom("1995 god.");
+        searchMotorcyclesPage.selectYearTo("2010 god.");
+        searchMotorcyclesPage.selectTypeMotorcycles("Chopper / Cruiser");
+        searchMotorcyclesPage.selectRegion("Beograd");
+        searchMotorcyclesPage.selectTypeMotorcycles("Touring");
+        searchMotorcyclesPage.selectRegion("Centralna Srbija");
+        searchMotorcyclesPage.checkCredit();
+
+        searchMotorcyclesPage.clickSearchVehicle();
+        //searchMotorcyclesPage.clickSurvey();
+
+        searchMotorcyclesPage.assertResultSerachMotorcycles("Prikazano");
+
+        searchMotorcyclesPage.selectSort("ceni silazno");
     }
 }

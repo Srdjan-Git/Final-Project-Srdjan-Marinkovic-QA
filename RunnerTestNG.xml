@@ -6,7 +6,7 @@
     <parameter name="environment" value="PROD"/>
     <parameter name="quit" value="NO"/>
 
-    <test name="Search old and new car">
+    <test name="Search old and new automobile">
         <classes>
             <class name="tests.SearchCar"/>
         </classes>

@@ -5,6 +5,8 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import java.io.IOException;
+
 public class SearchMotorcyclesPage extends BasePage {
 
     public SearchMotorcyclesPage(WebDriver driver) {
@@ -56,15 +58,15 @@ public class SearchMotorcyclesPage extends BasePage {
     WebElement yearToSelect;
 
     //Type
-    @FindBy(css = "p[title=' Tip']")
+    @FindBy(css = "form > div > div:nth-child(5) > div > p")
     WebElement typeClick;
     @FindBy(css = "form > div > div:nth-child(5) > div > div > ul")
     WebElement typeSelect;
 
     //Regions
-    @FindBy(css = "p[title=' Region']")
+    @FindBy(css = "form > div > div:nth-child(6) > div > p")
     WebElement regionsClick;
-    @FindBy(css = "form > div > div:nth-child(7) > div > div > ul")
+    @FindBy(css = "form > div > div:nth-child(6) > div > div > ul")
     WebElement regionsSelect;
 
     //Old new motorcycles
@@ -129,6 +131,17 @@ public class SearchMotorcyclesPage extends BasePage {
     WebElement searchSuccessful;
     // --- Result search end ---
 
+    //--- Sort ---
+    @FindBy(css = "p[title=' Osnovno']")
+    WebElement searchSortClick;
+    @FindBy(css = "#search-results > div:nth-child(3) > div:nth-child(3) > div:nth-child(2) > label > div.uk-width-medium-2-3.uk-width-1-1 > div > div > ul")
+    WebElement searchSortSelect;
+    //--- Sort End---
+
+    //--- Baner ---
+    @FindBy(css = "#billboardojuhgfmkkjxwmmsnsigtwgpj > div > div._ado-responsiveFooterBillboard-hover > svg > polygon")
+    WebElement baner;
+
 
     //--- Method ---
     public void clickCookie() throws Exception {
@@ -137,6 +150,55 @@ public class SearchMotorcyclesPage extends BasePage {
 
     public void clickVehicleMotorcycles() throws Exception {
         click(choiceVehicleMotorcycles,"Clicked on vehicle motorcycles button");
+    }
+
+    public void selectBrand(String brand) throws Exception {
+        selectValue(brand, brandsClick, brandsSelect, "Selecting the desired motorcycles brand");
+    }
+
+    public void enterPriceTo(String price) throws Exception {
+        sendValue(price, priceTo, "Send price value on price control");
+    }
+
+    public void selectYearFrom(String year) throws Exception {
+        selectValue(year, yearFromClick, yearFromSelect, "Selecting the desired year from");
+    }
+
+    public void selectYearTo(String year) throws Exception {
+        selectValue(year, yearToClick, yearToSelect, "Selecting the desired year to");
+    }
+
+    public void selectTypeMotorcycles(String type) throws Exception {
+        selectValue(type, typeClick, typeSelect, "Selecting the desired motorcycles type");
+    }
+
+    public void selectRegion(String region) throws Exception {
+        selectValue(region, regionsClick, regionsSelect, "Selecting the desired region");
+    }
+
+    public void checkCredit() throws Exception {
+        if (!creditMark.isSelected()){
+            click(creditMark, "Clicked on credit checkbox control");
+        }
+    }
+
+    public void clickSearchVehicle() throws Exception {
+        click(searchButton, "Clicked on the search button");
+    }
+
+    public void clickSurvey() throws Exception {
+        click(survey, "Clicked on the survey button - not want");
+    }
+
+    public void assertResultSerachMotorcycles(String result) throws IOException {
+        String getResult = searchSuccessful.getText();
+        boolean isContains = getResult.contains(result);
+        String boolResult = String.valueOf(isContains);
+        assertEqual(boolResult, "true", "Checking the obtained and expected results - after close filters");
+    }
+
+    public void selectSort(String sort) throws Exception {
+        selectValue(sort, searchSortClick, searchSortSelect, "Selecting the desired sort");
     }
 
 }
