@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+
+<suite name="SearchVehicle" thread-count="1" data-provider-thread-count="1">
+    <parameter name="browser" value="CHROME"/>
+    <parameter name="environment" value="PROD"/>
+    <parameter name="quit" value="NO"/>
+
+    <test name="Search old and new car">
+        <classes>
+            <class name="tests.SearchCar"/>
+        </classes>
+    </test>
+
+    <parameter name="browser" value="CHROME"/>
+    <parameter name="environment" value="PROD"/>
+    <parameter name="quit" value="NO"/>
+
+    <test name="Search old and new motorcycles">
+        <classes>
+            <class name="tests.SearchMotorcycles"/>
+        </classes>
+    </test>
+</suite>
+
+
+
