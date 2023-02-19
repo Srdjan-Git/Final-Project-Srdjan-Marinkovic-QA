@@ -1,6 +1,5 @@
 package pages;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -8,8 +7,9 @@ import org.openqa.selenium.support.PageFactory;
 
 import java.io.IOException;
 
-public class SearchCarPage extends BasePage {
-    public SearchCarPage(WebDriver driver) {
+public class MotorcyclesPage extends BasePage {
+
+    public MotorcyclesPage(WebDriver driver) {
         super(driver);
         PageFactory.initElements(driver, this);
     }
@@ -20,6 +20,11 @@ public class SearchCarPage extends BasePage {
     @FindBy(css = "button[id='btn_poll_no']")
     WebElement survey;
     //--- Button for cookie a survey End---
+
+    //--- Button menu vehicle ---
+    @FindBy(css = "a[title='Motori']")
+    WebElement choiceVehicleMotorcycles;
+    //--- Button menu vehicle End ---
 
 
     //--- Filters ---
@@ -52,28 +57,22 @@ public class SearchCarPage extends BasePage {
     @FindBy(css = "form > div > div:nth-child(4) > div > div:nth-child(2) > div > div > ul")
     WebElement yearToSelect;
 
-    //Chassis
-    @FindBy(css = "p[title=' Karoserija']")
-    WebElement chassisClick;
-    @FindBy(xpath = "//label[text() = 'Limuzina']/..")
-    WebElement chassisSelect;
-
-    //Fuels
-    @FindBy(css = "p[title=' Gorivo']")
-    WebElement fuelsClick;
-    @FindBy(css = "form > div > div:nth-child(6) > div > div > ul")
-    WebElement fuelsSelect;
+    //Type
+    @FindBy(css = "form > div > div:nth-child(5) > div > p")
+    WebElement typeClick;
+    @FindBy(css = "form > div > div:nth-child(5) > div > div > ul")
+    WebElement typeSelect;
 
     //Regions
-    @FindBy(css = "p[title=' Region']")
+    @FindBy(css = "form > div > div:nth-child(6) > div > p")
     WebElement regionsClick;
-    @FindBy(css = "form > div > div:nth-child(7) > div > div > ul")
+    @FindBy(css = "form > div > div:nth-child(6) > div > div > ul")
     WebElement regionsSelect;
 
-    //Old new vehicles
-    @FindBy(css = "p[title=' Polovna i nova vozila'] > span")
+    //Old new motorcycles
+    @FindBy(css = "p[title=' Polovne i nove motore'] > span")
     WebElement oldNewVehiclesClick;
-    @FindBy(xpath = "//label[text() = 'Polovna i nova vozila']/../..")
+    @FindBy(css = "form > div > div:nth-child(7) > div > div > ul")
     WebElement oldNewVehiclesSelect;
 
     //CheckBox credit
@@ -83,10 +82,6 @@ public class SearchCarPage extends BasePage {
     //CheckBox leasing
     @FindBy(css = "input[id='leasing']")
     WebElement leasingMark;
-
-    //CheckBox warranty
-    @FindBy(css = "input[id='warranty']")
-    WebElement warrantyMark;
     //--- Filters End---
 
 
@@ -115,9 +110,6 @@ public class SearchCarPage extends BasePage {
     @FindBy(css = "[data-field='credit'] > i")
     WebElement closeFilterCredit;
 
-    @FindBy(css = "[data-field='warranty'] > i")
-    WebElement closeFilterWarranty;
-
     @FindBy(css = "[data-field='price_to'] > i")
     WebElement closeFilterPriceTo;
 
@@ -126,7 +118,11 @@ public class SearchCarPage extends BasePage {
 
     @FindBy(css = "[data-field='year_to'] > i")
     WebElement closeFilterYearTo;
+
+    @FindBy(css = "[data-field='showOldNew'] > i")
+    WebElement closeFilterNewOld;
     //--- Close selected filter End---
+
 
     //--- Result search ---
     @FindBy(css = "div[class='uk-width-1-1 reversre-search uk-text-center']")
@@ -135,18 +131,29 @@ public class SearchCarPage extends BasePage {
     WebElement searchSuccessful;
     // --- Result search end ---
 
+    //--- Sort ---
+    @FindBy(css = "p[title=' Osnovno']")
+    WebElement searchSortClick;
+    @FindBy(css = "#search-results > div:nth-child(3) > div:nth-child(3) > div:nth-child(2) > label > div.uk-width-medium-2-3.uk-width-1-1 > div > div > ul")
+    WebElement searchSortSelect;
+    //--- Sort End---
+
+    //--- Baner ---
+    @FindBy(css = "#billboardojuhgfmkkjxwmmsnsigtwgpj > div > div._ado-responsiveFooterBillboard-hover > svg > polygon")
+    WebElement baner;
+
 
     //--- Method ---
     public void clickCookie() throws Exception {
         click(cookies,"Clicked on cookie button");
     }
 
-    public void selectBrand(String brand) throws Exception {
-        selectValue(brand, brandsClick, brandsSelect, "Selecting the desired brand");
+    public void clickVehicleMotorcycles() throws Exception {
+        click(choiceVehicleMotorcycles,"Clicked on vehicle motorcycles button");
     }
 
-    public void selectModel(String model) throws Exception {
-        selectValue(model, modelsClick, modelsSelect, "Selecting the desired model");
+    public void selectBrand(String brand) throws Exception {
+        selectValue(brand, brandsClick, brandsSelect, "Selecting the desired motorcycles brand");
     }
 
     public void enterPriceTo(String price) throws Exception {
@@ -161,25 +168,17 @@ public class SearchCarPage extends BasePage {
         selectValue(year, yearToClick, yearToSelect, "Selecting the desired year to");
     }
 
-    public void selectChassis(String chassisVehicle) throws Exception {
-        selectValueWithChecked(chassisVehicle, chassisClick, chassisSelect, "Selecting the desired chassis");
-    }
-
-    public void selectFuel(String fuel) throws Exception {
-        selectValue(fuel, fuelsClick, fuelsSelect, "Selecting the desired fuel");
+    public void selectTypeMotorcycles(String type) throws Exception {
+        selectValue(type, typeClick, typeSelect, "Selecting the desired motorcycles type");
     }
 
     public void selectRegion(String region) throws Exception {
         selectValue(region, regionsClick, regionsSelect, "Selecting the desired region");
     }
 
-    public void selectOldNewVehicles(String oldNewVehiclesValue) throws Exception {
-        selectValue(oldNewVehiclesValue, oldNewVehiclesClick, oldNewVehiclesSelect, "Selected on old i new vehicles");
-    }
-
-    public void checkWaranty() throws Exception {
-        if (!warrantyMark.isSelected()){
-            click(warrantyMark, "Clicked on waranty checkbox control");
+    public void checkCredit() throws Exception {
+        if (!creditMark.isSelected()){
+            click(creditMark, "Clicked on credit checkbox control");
         }
     }
 
@@ -191,37 +190,15 @@ public class SearchCarPage extends BasePage {
         click(survey, "Clicked on the survey button - not want");
     }
 
-    public void assertResultSerach(String result) throws IOException {
-        String getResult = searchFailed.getText();
-        assertEqual(getResult, result, "Checking the obtained and expected results - with filters");
-    }
-
-    public void clickCloseFilterChassis() throws Exception {
-        click(closeFilterChassis, "Clicked on close filter chassis");
-    }
-
-    public void clickCloseFilterWaranty() throws Exception {
-        click(closeFilterWarranty, "Clicked on close filter waranty");
-    }
-
-    public void clickCloseFilterRegion() throws Exception {
-        click(closeFilterRegion, "Clicked on close filter region");
-    }
-
-    public void clickCloseFilterFuel() throws Exception {
-        click(closeFilterFuel, "Clicked on close filter fuel");
-    }
-
-    public void clickCloseFilterPriceTo() throws Exception {
-        click(closeFilterPriceTo, "Clicked on close filter price to");
-    }
-
-    public void assertResultSerachAfterCloseFilters(String result) throws IOException {
+    public void assertResultSerachMotorcycles(String result) throws IOException {
         String getResult = searchSuccessful.getText();
         boolean isContains = getResult.contains(result);
         String boolResult = String.valueOf(isContains);
         assertEqual(boolResult, "true", "Checking the obtained and expected results - after close filters");
     }
 
-}
+    public void selectSort(String sort) throws Exception {
+        selectValue(sort, searchSortClick, searchSortSelect, "Selecting the desired sort");
+    }
 
+}

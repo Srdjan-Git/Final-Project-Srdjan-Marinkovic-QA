@@ -5,12 +5,11 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import pages.SearchCarPage;
-import pages.SearchMotorcyclesPage;
+import pages.MotorcyclesPage;
 
 import java.io.IOException;
 
-public class SearchMotorcycles extends BaseTest {
+public class Motorcycles extends BaseTest {
     @BeforeMethod
     @Parameters({"browser"})
     public void setup(String browser) throws Exception {
@@ -26,7 +25,7 @@ public class SearchMotorcycles extends BaseTest {
     }
 
     @Test(description = "Search Motorcycles")
-    @Description("Search for the desired motorcycles with filters and check the results. Shutting down the filter and re-searching and checking the results.")
+    @Description("Search for the desired motorcycles with filters and check the results. Sort the obtained results by descending price.")
     @Severity(SeverityLevel.CRITICAL)
     @Epic("EP001 - Motorcycles")
     @Feature("FE001 - Search used and new motorcycles")
@@ -35,26 +34,26 @@ public class SearchMotorcycles extends BaseTest {
     @Parameters({"environment"})
     public void test(String environment) throws Exception {
         openApplication(environment, "Application started");
-        SearchMotorcyclesPage searchMotorcyclesPage = new SearchMotorcyclesPage(driver);
+        MotorcyclesPage motorcyclesPage = new MotorcyclesPage(driver);
 
-        searchMotorcyclesPage.clickCookie();
-        searchMotorcyclesPage.clickVehicleMotorcycles();
+        motorcyclesPage.clickCookie();
+        motorcyclesPage.clickVehicleMotorcycles();
 
-        searchMotorcyclesPage.selectBrand("Honda");
-        searchMotorcyclesPage.enterPriceTo("6000");
-        searchMotorcyclesPage.selectYearFrom("1995 god.");
-        searchMotorcyclesPage.selectYearTo("2010 god.");
-        searchMotorcyclesPage.selectTypeMotorcycles("Chopper / Cruiser");
-        searchMotorcyclesPage.selectRegion("Beograd");
-        searchMotorcyclesPage.selectTypeMotorcycles("Touring");
-        searchMotorcyclesPage.selectRegion("Centralna Srbija");
-        searchMotorcyclesPage.checkCredit();
+        motorcyclesPage.selectBrand("Honda");
+        motorcyclesPage.enterPriceTo("6000");
+        motorcyclesPage.selectYearFrom("1995 god.");
+        motorcyclesPage.selectYearTo("2010 god.");
+        motorcyclesPage.selectTypeMotorcycles("Chopper / Cruiser");
+        motorcyclesPage.selectRegion("Beograd");
+        motorcyclesPage.selectTypeMotorcycles("Touring");
+        motorcyclesPage.selectRegion("Centralna Srbija");
+        motorcyclesPage.checkCredit();
 
-        searchMotorcyclesPage.clickSearchVehicle();
+        motorcyclesPage.clickSearchVehicle();
         //searchMotorcyclesPage.clickSurvey();
 
-        searchMotorcyclesPage.assertResultSerachMotorcycles("Prikazano");
+        motorcyclesPage.assertResultSerachMotorcycles("Prikazano");
 
-        searchMotorcyclesPage.selectSort("ceni silazno");
+        motorcyclesPage.selectSort("ceni silazno");
     }
 }

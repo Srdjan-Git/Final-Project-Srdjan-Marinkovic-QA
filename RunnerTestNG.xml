@@ -4,21 +4,31 @@
 <suite name="SearchVehicle" thread-count="1" data-provider-thread-count="1">
     <parameter name="browser" value="CHROME"/>
     <parameter name="environment" value="PROD"/>
-    <parameter name="quit" value="NO"/>
+    <parameter name="quit" value="YES"/>
 
     <test name="Search old and new automobile">
         <classes>
-            <class name="tests.SearchCar"/>
+            <class name="tests.Automobile"/>
         </classes>
     </test>
 
     <parameter name="browser" value="CHROME"/>
     <parameter name="environment" value="PROD"/>
-    <parameter name="quit" value="NO"/>
+    <parameter name="quit" value="YES"/>
 
     <test name="Search old and new motorcycles">
         <classes>
-            <class name="tests.SearchMotorcycles"/>
+            <class name="tests.Motorcycles"/>
+        </classes>
+    </test>
+
+    <parameter name="browser" value="CHROME"/>
+    <parameter name="environment" value="PROD"/>
+    <parameter name="quit" value="YES"/>
+
+    <test name="Search old and new bus">
+        <classes>
+            <class name="tests.TransportVehiclesBus"/>
         </classes>
     </test>
 </suite>
