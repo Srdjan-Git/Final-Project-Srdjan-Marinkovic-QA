@@ -6,31 +6,31 @@
     <parameter name="environment" value="PROD"/>
     <parameter name="quit" value="YES"/>
 
-    <test name="Search old and new automobile">
+    <test name="Search old and new vehicles">
         <classes>
-            <class name="runners.Runner"/>   <!--tests.Automobile  for TestNG-->
+            <class name="runners.Runner"/>
         </classes>
     </test>
 
-<!--    <parameter name="browser" value="CHROME"/>-->
-<!--    <parameter name="environment" value="PROD"/>-->
-<!--    <parameter name="quit" value="YES"/>-->
+<!--    <parameter name="browser" value="CHROME"/>&ndash;&gt;-->
+<!--    <parameter name="environment" value="PROD"/>&ndash;&gt;-->
+<!--    <parameter name="quit" value="YES"/>&ndash;&gt;-->
 
-<!--    <test name="Search old and new motorcycles">-->
-<!--        <classes>-->
-<!--            <class name="tests.Motorcycles"/>   &lt;!&ndash;tests.Motorcycles  for TestNG&ndash;&gt;-->
-<!--        </classes>-->
-<!--    </test>-->
+<!--    <test name="Search old and new motorcycles">&ndash;&gt;-->
+<!--        <classes>&ndash;&gt;-->
+<!--            <class name="tests.Motorcycles"/>-->
+<!--        </classes>&ndash;&gt;-->
+<!--    </test>&ndash;&gt;-->
 
-<!--    <parameter name="browser" value="CHROME"/>-->
-<!--    <parameter name="environment" value="PROD"/>-->
-<!--    <parameter name="quit" value="YES"/>-->
+<!--    <parameter name="browser" value="CHROME"/>&ndash;&gt;-->
+<!--    <parameter name="environment" value="PROD"/>&ndash;&gt;-->
+<!--    <parameter name="quit" value="YES"/>&ndash;&gt;-->
 
-<!--    <test name="Search old and new bus">-->
-<!--        <classes>-->
-<!--            <class name="tests.TransportVehiclesBus"/>   &lt;!&ndash;tests.TransportVehiclesBus  for TestNG&ndash;&gt;-->
-<!--        </classes>-->
-<!--    </test>-->
+<!--    <test name="Search old and new bus">&ndash;&gt;-->
+<!--        <classes>&ndash;&gt;-->
+<!--            <class name="tests.Bus"/>-->
+<!--        </classes>&ndash;&gt;-->
+<!--    </test>&ndash;&gt;-->
 </suite>
 
 

@@ -5,11 +5,11 @@ import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
 import org.testng.annotations.Test;
-import pages.TransportVehiclesBusPage;
+import pages.BusPage;
 
 import java.io.IOException;
 
-public class TransportVehiclesBus extends BaseTest {
+public class Bus extends BaseTest {
     @BeforeMethod
     @Parameters({"browser"})
     public void setup(String browser) throws Exception {
@@ -34,30 +34,30 @@ public class TransportVehiclesBus extends BaseTest {
     @Parameters({"environment"})
     public void test(String environment) throws Exception {
         openApplication(environment, "Application started");
-        TransportVehiclesBusPage transportVehiclesBusPage = new TransportVehiclesBusPage(driver);
+        BusPage busPage = new BusPage(driver);
 
-        transportVehiclesBusPage.clickCookie();
-        transportVehiclesBusPage.clickTransportVehicle();
-        transportVehiclesBusPage.clickTransportVehicleBus();
+        busPage.clickCookie();
+        busPage.clickTransportVehicle();
+        busPage.clickTransportVehicleBus();
 
-        transportVehiclesBusPage.clickSearchVehicle();
+        busPage.clickSearchVehicle();
 
-        transportVehiclesBusPage.selectBrand("Iveco");
-        transportVehiclesBusPage.enterPriceFrom("5000");
-        transportVehiclesBusPage.enterPriceTo("10000");
-        transportVehiclesBusPage.selectYearFrom("2002 god.");
-        transportVehiclesBusPage.selectYearTo("2010 god.");
-        transportVehiclesBusPage.selectKmFrom("10000 km");
-        transportVehiclesBusPage.selectKmTo("400000 km");
-        transportVehiclesBusPage.selectFuel("Dizel");
-        transportVehiclesBusPage.selectRegion("Vojvodina");
-        transportVehiclesBusPage.selectSeatsFrom("10");
-        transportVehiclesBusPage.selectSeatsTo("60");
+        busPage.selectBrand("Iveco");
+        busPage.enterPriceFrom("5000");
+        busPage.enterPriceTo("10000");
+        busPage.selectYearFrom("2002 god.");
+        busPage.selectYearTo("2010 god.");
+        busPage.selectKmFrom("10000 km");
+        busPage.selectKmTo("400000 km");
+        busPage.selectFuel("Dizel");
+        busPage.selectRegion("Vojvodina");
+        busPage.selectSeatsFrom("10");
+        busPage.selectSeatsTo("60");
 
-        transportVehiclesBusPage.clickSearchVehicle();
+        busPage.clickSearchVehicle();
         //searchMotorcyclesPage.clickSurvey();
 
-        transportVehiclesBusPage.assertResultSerachBus("Prikazano");
+        busPage.assertResultSerachBus("Prikazano");
 
         //motorcyclesPage.selectSort("ceni silazno");
     }

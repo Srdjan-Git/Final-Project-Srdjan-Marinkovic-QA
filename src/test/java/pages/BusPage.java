@@ -6,8 +6,8 @@ import org.openqa.selenium.support.FindBy;
 
 import java.io.IOException;
 
-public class TransportVehiclesBusPage extends BasePage{
-    public TransportVehiclesBusPage(WebDriver driver) {
+public class BusPage extends BasePage{
+    public BusPage(WebDriver driver) {
         super(driver);
     }
 
