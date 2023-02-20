@@ -182,7 +182,7 @@ public class MotorcyclesPage extends BasePage {
         }
     }
 
-    public void clickSearchVehicle() throws Exception {
+    public void clickSearchMotorcycles() throws Exception {
         click(searchButton, "Clicked on the search button");
     }
 

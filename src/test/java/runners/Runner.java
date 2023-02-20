@@ -8,7 +8,8 @@ import org.testng.annotations.Test;
 @Test
 @CucumberOptions(
         features = "src/test/java/features",
-        glue = "steps"
+        glue = "steps",
+        plugin = {"io.qameta.allure.cucumber6jvm.AllureCucumber6Jvm"}
 )
 public class Runner extends AbstractTestNGCucumberTests {
     @Override

@@ -49,7 +49,7 @@ public class Motorcycles extends BaseTest {
         motorcyclesPage.selectRegion("Centralna Srbija");
         motorcyclesPage.checkCredit();
 
-        motorcyclesPage.clickSearchVehicle();
+        motorcyclesPage.clickSearchMotorcycles();
         //searchMotorcyclesPage.clickSurvey();
 
         motorcyclesPage.assertResultSerachMotorcycles("Prikazano");

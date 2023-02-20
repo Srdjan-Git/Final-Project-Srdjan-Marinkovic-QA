@@ -1,8 +1,8 @@
 Feature: Automobile
-  As I user should be able to search new and used automobiles to the app
+  As I user should be able to search new and used automobiles to the app.
 
   Scenario: Search automobile with filters
-    As I user should be able to search new and used automobiles to the app and close filters and again search automobile and check results searches
+    As I user should be able to search new and used automobiles to the app and close filters and again search automobile and check results searches.
 
     Given I am on the polovni automobili home page
     When I click on cookie button
