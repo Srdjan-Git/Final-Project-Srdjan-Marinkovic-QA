@@ -1,5 +1,6 @@
 package steps;
 
+import excel.ExcelReader;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -11,11 +12,14 @@ import pages.BusPage;
 import tests.BaseTest;
 
 import java.io.IOException;
+import java.util.Map;
 
 public class BusSteps extends BaseTest {
 
     String browser = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("browser");
     String quit = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("quit");
+
+    Map<String, String> data;
 
     @Before
     public void setup() throws Exception {
@@ -29,10 +33,10 @@ public class BusSteps extends BaseTest {
         quitBrowser(quit);
     }
 
-    @Given("I am on the polovni automobili home page for bus")
-    public void iAmOnThePolovniAutomobiliHomePageForBus(){
+    @Given("I am on the polovni automobili home page for bus and I load data from {string} {string} for {string}")
+    public void iAmOnThePolovniAutomobiliHomePageForBus(String file, String sheet, String row) throws IOException {
         driver.get("https://www.polovniautomobili.com/");
-
+        data = new ExcelReader().getRowDataByID(file, sheet, row);
     }
 
     @When("I click on cookie button page bus")
@@ -57,57 +61,57 @@ public class BusSteps extends BaseTest {
 
     @And("I select desire bus brand")
     public void iSelectDesireBusBrand() throws Exception {
-        new BusPage(driver).selectBrand("Iveco");
+        new BusPage(driver).selectBrand(data.get("brand"));
     }
 
     @And("I enter desire bus price from")
     public void iEnterDesireBusPriceFrom() throws Exception {
-        new BusPage(driver).enterPriceFrom("5000");
+        new BusPage(driver).enterPriceFrom(data.get("priceFrom"));
     }
 
     @And("I enter desire bus price to")
     public void iEnterDesireBusPriceTo() throws Exception {
-        new BusPage(driver).enterPriceTo("10000");
+        new BusPage(driver).enterPriceTo(data.get("priceTo"));
     }
 
     @And("I select desire bus year from")
     public void iSelectDesireBusYearFrom() throws Exception {
-        new BusPage(driver).selectYearFrom("2000 god.");
+        new BusPage(driver).selectYearFrom(data.get("yearFrom"));
     }
 
     @And("I select desire bus year to")
     public void iSelectDesireBusYearTo() throws Exception {
-        new BusPage(driver).selectYearTo("2010 god.");
+        new BusPage(driver).selectYearTo(data.get("yearTo"));
     }
 
     @And("I select desire bus km from")
     public void iSelectDesireBusKmFrom() throws Exception {
-        new BusPage(driver).selectKmFrom("10000 km");
+        new BusPage(driver).selectKmFrom(data.get("kmFrom"));
     }
 
     @And("I select desire bus km to")
     public void iSelectDesireBusKmTo() throws Exception {
-        new BusPage(driver).selectKmTo("400000 km");
+        new BusPage(driver).selectKmTo(data.get("kmTo"));
     }
 
     @And("I select desire bus fuel")
     public void iSelectDesireBusFuel() throws Exception {
-        new BusPage(driver).selectFuel("Dizel");
+        new BusPage(driver).selectFuel(data.get("fuel"));
     }
 
     @And("I select desire bus region")
     public void iSelectDesireBusRegion() throws Exception {
-        new BusPage(driver).selectRegion("Vojvodina");
+        new BusPage(driver).selectRegion(data.get("region"));
     }
 
     @And("I select bus seats from")
     public void iSelectBusSeatsFrom() throws Exception {
-        new BusPage(driver).selectSeatsFrom("10");
+        new BusPage(driver).selectSeatsFrom(data.get("seatsFrom"));
     }
 
     @And("I select bus seats to")
     public void iSelectBusSeatsTo() throws Exception {
-        new BusPage(driver).selectSeatsTo("60");
+        new BusPage(driver).selectSeatsTo(data.get("seatsTo"));
     }
 
     @And("I click search button bus")
@@ -117,6 +121,6 @@ public class BusSteps extends BaseTest {
 
     @Then("I should by see result search bus")
     public void iShouldBySeeResultSearchBus() throws IOException {
-        new BusPage(driver).assertResultSerachBus("Prikazano");
+        new BusPage(driver).assertResultSerachBus(data.get("messageSuccessfully"));
     }
 }

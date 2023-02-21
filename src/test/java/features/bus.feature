@@ -1,10 +1,10 @@
 Feature: Bus
   As I user should be able to search new and used bus to the app.
 
-  Scenario: Search bus with filters
+  Scenario Outline: Search bus with filters
   As I user should be able to more detailed search new and used bus to the app and and check results searches.
 
-    Given I am on the polovni automobili home page for bus
+    Given I am on the polovni automobili home page for bus and I load data from "TestData" "Buses" for "<tc_id>"
     When I click on cookie button page bus
     And I clicked on icon transport vehicles in menu
     And I clicked on icon bus in sub menu
@@ -22,3 +22,7 @@ Feature: Bus
     And I select bus seats to
     And I click search button bus
     Then I should by see result search bus
+
+    Examples:
+      | tc_id  |
+      | TC_0001|

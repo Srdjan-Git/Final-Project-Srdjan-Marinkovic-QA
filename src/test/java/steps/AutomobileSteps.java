@@ -1,5 +1,6 @@
 package steps;
 
+import excel.ExcelReader;
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.en.And;
@@ -11,10 +12,13 @@ import pages.AutomobilePage;
 import tests.BaseTest;
 
 import java.io.IOException;
+import java.util.Map;
 
 public class AutomobileSteps extends BaseTest {
     String browser = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("browser");
     String quit = Reporter.getCurrentTestResult().getTestContext().getCurrentXmlTest().getParameter("quit");
+
+    Map<String, String> data;
 
     @Before
     public void setup() throws Exception {
@@ -28,11 +32,17 @@ public class AutomobileSteps extends BaseTest {
         quitBrowser(quit);
     }
 
-    @Given("I am on the polovni automobili home page")
-    public void iAmOnThePolovniAutomobiliHomePage(){
+    @Given("I am on the polovni automobili home page and I load data from {string} {string} for {string}")
+    public void iAmOnThePolovniAutomobiliHomePageAndILoadDataFrom(String file, String sheet, String row) throws IOException {
         driver.get("https://www.polovniautomobili.com/");
-
+        data = new ExcelReader().getRowDataByID(file, sheet, row);
     }
+
+//    @Given("I am on the polovni automobili home page")
+//    public void iAmOnThePolovniAutomobiliHomePage(){
+//        driver.get("https://www.polovniautomobili.com/");
+//
+//    }
 
     @When("I click on cookie button")
     public void iClickOnCookieButton() throws Exception {
@@ -41,52 +51,54 @@ public class AutomobileSteps extends BaseTest {
 
     @And("I select desire automobile brand")
     public void iSelectDesireAutomobileBrand() throws Exception {
-        new AutomobilePage(driver).selectBrand("Mercedes Benz");
+        new AutomobilePage(driver).selectBrand(data.get("brand"));
     }
 
     @And("I select desire automobile model")
     public void iSelectDesireAutomobileModel() throws Exception {
-        new AutomobilePage(driver).selectModel("C 220");
+        new AutomobilePage(driver).selectModel(data.get("model"));
     }
 
     @And("I enter desire automobile price")
     public void iEnterDesireAutomobilePrice() throws Exception {
-        new AutomobilePage(driver).enterPriceTo("10000");
+        new AutomobilePage(driver).enterPriceTo(data.get("price"));
     }
 
     @And("I select desire automobile year from")
     public void iSelectDesireAutomobileYearFrom() throws Exception {
-        new AutomobilePage(driver).selectYearFrom("2007 god.");
+        new AutomobilePage(driver).selectYearFrom(data.get("yearFrom"));
     }
 
     @And("I select desire automobile year to")
     public void iSelectDesireAutomobileYearTo() throws Exception {
-        new AutomobilePage(driver).selectYearTo("2015 god.");
+        new AutomobilePage(driver).selectYearTo(data.get("yearTo"));
     }
 
     @And("I select desire automobile chassis")
     public void iSelectDesireAutomobileChassis() throws Exception {
-        new AutomobilePage(driver).selectChassis("Karavan");
+        new AutomobilePage(driver).selectChassis(data.get("chassis"));
     }
 
     @And("I select desire automobile fuel")
     public void iSelectDesireAutomobileFuel() throws Exception {
-        new AutomobilePage(driver).selectFuel("Benzin");
+        new AutomobilePage(driver).selectFuel(data.get("fuel"));
     }
 
     @And("I select desire automobile region")
     public void iSelectDesireAutomobileRegion() throws Exception {
-        new AutomobilePage(driver).selectRegion("Beograd");
+        new AutomobilePage(driver).selectRegion(data.get("region"));
     }
 
     @And("I select desire automobile old new vehicles")
     public void iSelectDesireAutomobileOldNewVehicles() throws Exception {
-        new AutomobilePage(driver).selectOldNewVehicles("Samo polovna vozila");
+        new AutomobilePage(driver).selectOldNewVehicles(data.get("oldNewVehicles"));
     }
 
     @And("I check automobile waranty")
     public void iCheckAutomobileWaranty() throws Exception {
-        new AutomobilePage(driver).checkWaranty();
+        if (data.get("waranty").equals("Yes")){
+            new AutomobilePage(driver).checkWaranty();
+        }
     }
 
     @And("I click search button")
@@ -101,7 +113,7 @@ public class AutomobileSteps extends BaseTest {
 
     @Then("I should by see result search")
     public void iShouldBySeeResultSearch() throws IOException {
-        new AutomobilePage(driver).assertResultSerach("Trenutno nema rezultata koji odgovaraju tvom kriterijumu pretraživanja. Savetujemo ti da oglasiš kupovinu vozila kakvo tražiš, a mi ćemo te obavestiti kada se takvo vozilo pojavi na sajtu.");
+        new AutomobilePage(driver).assertResultSerach(data.get("messageFailed"));
     }
 
     @And("I uncheck waranty filter")
@@ -131,7 +143,7 @@ public class AutomobileSteps extends BaseTest {
 
     @And("I select again desire automobile chassis")
     public void iSelectAgainDesireAutomobileChassis() throws Exception {
-        new AutomobilePage(driver).selectChassis("Limuzina");
+        new AutomobilePage(driver).selectChassis(data.get("chassisTwo"));
     }
 
     @And("I click again to search button")
@@ -141,6 +153,6 @@ public class AutomobileSteps extends BaseTest {
 
     @Then("I should by see new result search")
     public void iShouldBySeeNewResultSearch() throws IOException {
-        new AutomobilePage(driver).assertResultSerachAfterCloseFilters("Prikazano");
+        new AutomobilePage(driver).assertResultSerachAfterCloseFilters(data.get("messageSuccessfully"));
     }
 }

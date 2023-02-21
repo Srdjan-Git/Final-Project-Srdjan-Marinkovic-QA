@@ -1,10 +1,10 @@
 Feature: Motorcycles
   As I user should be able to search new and used motorcycles to the app.
 
-  Scenario: Search motorcycles with filters
+  Scenario Outline: Search motorcycles with filters
   As I user should be able to search new and used motorcycles to the app and sort the obtained results by descending price.
 
-    Given I am on the polovni automobili home page for motorcycles
+    Given I am on the polovni automobili home page for motorcycles and I load data from "TestData" "Motorcycles" for "<tc_id>"
     When I click on cookie button page motorcycles
     And I clicked on icon motorcycles in menu
     And I select desire motorcycles brand
@@ -19,3 +19,7 @@ Feature: Motorcycles
     And I click search button motorcycles
     Then I should by see result search motorcycles
     And I  to sort by descending price
+
+    Examples:
+      | tc_id  |
+      | TC_0001|
