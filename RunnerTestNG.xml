@@ -2,6 +2,9 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 
 <suite name="SearchVehicle" thread-count="1" data-provider-thread-count="1">
+
+    <!-- Running Cucumber -->
+
     <parameter name="browser" value="CHROME"/>
     <parameter name="environment" value="PROD"/>
     <parameter name="quit" value="YES"/>
@@ -12,25 +15,41 @@
         </classes>
     </test>
 
-<!--    <parameter name="browser" value="CHROME"/>&ndash;&gt;-->
-<!--    <parameter name="environment" value="PROD"/>&ndash;&gt;-->
-<!--    <parameter name="quit" value="YES"/>&ndash;&gt;-->
 
-<!--    <test name="Search old and new motorcycles">&ndash;&gt;-->
-<!--        <classes>&ndash;&gt;-->
-<!--            <class name="tests.Motorcycles"/>-->
-<!--        </classes>&ndash;&gt;-->
-<!--    </test>&ndash;&gt;-->
+    <!-- Running TestNG -->
 
-<!--    <parameter name="browser" value="CHROME"/>&ndash;&gt;-->
-<!--    <parameter name="environment" value="PROD"/>&ndash;&gt;-->
-<!--    <parameter name="quit" value="YES"/>&ndash;&gt;-->
+<!--
+    <parameter name="browser" value="CHROME"/>
+    <parameter name="environment" value="PROD"/>
+    <parameter name="quit" value="YES"/>
 
-<!--    <test name="Search old and new bus">&ndash;&gt;-->
-<!--        <classes>&ndash;&gt;-->
-<!--            <class name="tests.Bus"/>-->
-<!--        </classes>&ndash;&gt;-->
-<!--    </test>&ndash;&gt;-->
+    <test name="Search old and new vehicles">
+        <classes>
+            <class name="tests.Automobile"/>
+        </classes>
+    </test>
+
+    <parameter name="browser" value="CHROME"/>
+    <parameter name="environment" value="PROD"/>
+    <parameter name="quit" value="YES"/>
+
+    <test name="Search old and new motorcycles">
+        <classes>
+            <class name="tests.Motorcycles"/>
+        </classes>
+    </test>
+
+    <parameter name="browser" value="CHROME"/>
+    <parameter name="environment" value="PROD"/>
+    <parameter name="quit" value="YES"/>
+
+    <test name="Search old and new bus">
+        <classes>
+            <class name="tests.Bus"/>
+        </classes>
+    </test>
+-->
+
 </suite>
 
 

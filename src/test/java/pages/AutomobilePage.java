@@ -1,5 +1,6 @@
 package pages;
 
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -187,7 +188,9 @@ public class AutomobilePage extends BasePage {
     }
 
     public void clickSurvey() throws Exception {
-        click(survey, "Clicked on the survey button - not want");
+        if (driver.findElements(By.cssSelector("button[id='btn_poll_no']")).size() != 0){
+            click(survey, "Clicked on the survey button - not want");
+        }
     }
 
     public void assertResultSerach(String result) throws IOException {
